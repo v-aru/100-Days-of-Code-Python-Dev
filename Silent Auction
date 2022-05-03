@@ -1,0 +1,41 @@
+logo = '''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''
+
+print(logo)
+print("Welcome to the Silent Auction.")
+
+bid_options = []
+
+def bidding():
+    bidder_details = {}
+    bidder_details["name"] = input("What is your name? ")
+    bidder_details["bid_value"] = int(input("what is your bid? $"))
+    bid_options.append(bidder_details)
+    choice = input("Are there any other bidders? Type 'yes' or 'no': ").lower()
+    if choice == "yes":
+      bidding()
+    else:
+      length = len(bid_options)
+      temp_bid = bid_options[0]
+      for i in range(length):
+        if bid_options[i]["bid_value"] > temp_bid["bid_value"] :
+          temp_bid = bid_options[i]
+        
+      print(
+            f"The winner is ${temp_bid['name']} with a bid of ${temp_bid['bid_value']}."
+        )
+
+
+bidding()
+
