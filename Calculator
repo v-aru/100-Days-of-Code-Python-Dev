@@ -1,0 +1,58 @@
+from art import calc_logo
+from replit import clear
+
+print(calc_logo)
+
+def addition(a, b):
+  return a + b
+
+def subtraction (a, b):
+  return a - b
+
+def multiplication (a, b):
+  return a * b
+
+def division (a, b) : 
+  return a / b
+
+def calculator(number1, number2, operation):
+  if operation == '+' :
+    result = addition(number1, number2)
+    print(f"{number1} {operation} {number2} = {result}")
+  elif operation == '-' :
+    result = subtraction(number1, number2)
+    print( f"{number1} {operation} {number2} = {result}")
+  elif operation == '*' :
+    result = multiplication(number1, number2)
+    print( f"{number1} {operation} {number2} = {result}")
+  elif operation == '/' :
+    result = division(number1, number2)
+    print( f"{number1} {operation} {number2} = {result}")
+  else:
+    print("Invalid operation selected. Please select from choice.")
+
+  choice = input("Input Y if you'd like to continue with result of previous calculation or N to start new calculation: ").lower()
+  if choice == 'y':
+    number1 = result
+    number2 = int(input("What's the second number: "))
+    operation = input ("Pick an operation : + - * / \n")
+    calculator(number1, number2, operation)
+  if choice == 'n':
+    clear()
+    print(logo)
+    inputs()
+    
+  else:
+    print("Invalid input")
+
+
+def inputs():
+  number1 = int(input("What's the first number: "))
+  number2 = int(input("What's the second number: "))
+  operation = input ("Pick an operation : + - * / \n")
+  calculator(number1, number2, operation)
+  
+result = 0
+inputs()
+
+
