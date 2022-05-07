@@ -18,56 +18,54 @@ logo = """
 
 print(logo)
 
-def addition(a, b):
-  return a + b
 
-def subtraction (a, b):
-  return a - b
+def addition(num1, num2):
+  return num1 + num2
 
-def multiplication (a, b):
-  return a * b
+def subtraction (num1, num2):
+  return num1 - num2
 
-def division (a, b) : 
-  return a / b
+def multiplication (num1, num2):
+  return num1 * num2
 
-def calculator(number1, number2, operation):
-  if operation == '+' :
-    result = addition(number1, number2)
-    print(f"{number1} {operation} {number2} = {result}")
-  elif operation == '-' :
-    result = subtraction(number1, number2)
-    print( f"{number1} {operation} {number2} = {result}")
-  elif operation == '*' :
-    result = multiplication(number1, number2)
-    print( f"{number1} {operation} {number2} = {result}")
-  elif operation == '/' :
-    result = division(number1, number2)
-    print( f"{number1} {operation} {number2} = {result}")
-  else:
-    print("Invalid operation selected. Please select from choice.")
+def division (num1, num2) : 
+  return num1 / num2
 
-  choice = input("Input Y if you'd like to continue with result of previous calculation or N to start new calculation: ").lower()
-  if choice == 'y':
-    number1 = result
-    number2 = int(input("What's the second number: "))
-    operation = input ("Pick an operation : + - * / \n")
-    calculator(number1, number2, operation)
-  if choice == 'n':
-    clear()
-    print(logo)
-    inputs()
-    
-  else:
-    print("Invalid input")
+operations_dict = {
+  "+" : addition ,
+  "-" : subtraction,
+  "*" : multiplication,
+  "/" : division 
+  }
 
-
-def inputs():
+def calc() :
   number1 = int(input("What's the first number: "))
-  number2 = int(input("What's the second number: "))
-  operation = input ("Pick an operation : + - * / \n")
-  calculator(number1, number2, operation)
   
-result = 0
-inputs()
+  should_continue = True
+
+  while should_continue :
+    number2 = int(input("What's the second number: "))
+    operation_input = input ("Pick an operation : + - * / \n")
+    calculator = operations_dict[operation_input]
+    result = calculator(number1, number2)
+    print(f"{number1} {operation_input} {number2} = {result}")
+    
+    choice = input("Input Y if you'd like to continue with result of previous calculation or N to start new calculation: ").lower()
+    if choice == 'y':
+        number1 = result
+      
+    elif choice == 'n':
+        clear()
+        print(logo)
+        should_exit = input("Do you want to continue? Y/N").lower()
+        if should_exit == 'n':
+          should_continue = False
+        else :
+          should_continue = True
+          calc()
+    else:
+      print("invalid choice")
+      
+calc()
 
 
