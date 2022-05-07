@@ -36,12 +36,12 @@ operations_dict = {
   "/" : division }
 
 def calc() :
-  number1 = int(input("What's the first number: "))
+  number1 = float(input("What's the first number: "))
   
   should_continue = True
 
   while should_continue :
-    number2 = int(input("What's the second number: "))
+    number2 = float(input("What's the second number: "))
     operation_input = input ("Pick an operation : + - * / \n")
     calculator = operations_dict[operation_input]
     result = calculator(number1, number2)
